@@ -9,11 +9,6 @@ if(BUILD_TEST)
     # Google Test
     set(GOOGLETEST_ROOT externals/gtest/googletest CACHE STRING "Google Test source root")
 
-    include_directories(SYSTEM
-        ${PROJECT_SOURCE_DIR}/${GOOGLETEST_ROOT}
-        ${PROJECT_SOURCE_DIR}/${GOOGLETEST_ROOT}/include
-        )
-
     set(GOOGLETEST_SOURCES
         ${PROJECT_SOURCE_DIR}/${GOOGLETEST_ROOT}/src/gtest-all.cc
         ${PROJECT_SOURCE_DIR}/${GOOGLETEST_ROOT}/src/gtest_main.cc
@@ -24,5 +19,10 @@ if(BUILD_TEST)
     endforeach()
 
     add_library(gtest ${GOOGLETEST_SOURCES})
+    
+    target_include_directories(gtest PUBLIC
+        ${PROJECT_SOURCE_DIR}/${GOOGLETEST_ROOT}
+        ${PROJECT_SOURCE_DIR}/${GOOGLETEST_ROOT}/include
+        )
 
 endif()
