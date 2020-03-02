@@ -19,5 +19,5 @@ build:
   project: $(APPVEYOR_BUILD_FOLDER)\$(APPVEYOR_PROJECT_NAME).sln
 
 test_script:
-  - ctest --verbose -C Debug
+  - ctest --verbose -C %configuration%
 
